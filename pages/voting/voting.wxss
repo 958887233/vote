@@ -1,0 +1,23 @@
+/* pages/voting/voting.wxss */
+.page {
+  background-color: #fff;
+  padding: 00px 20px;
+}
+.vite-title {
+  padding: 10px, 15px;
+  background-color: #fff;
+  text-align: center;
+}
+.line {
+  background: #cc9900;
+  height: 1px;
+  border: none;
+  margin: 10px 0px;
+}
+.content {
+  height: 50px;
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,6 @@
+
+
+<view class="container">
+  <text>Hello {{ page }}</text>
+</view>
+<button bindtap='changeName'>Click Me!</button>
