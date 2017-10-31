@@ -1,3 +1,5 @@
+var http = require("../../utils/http.js");
+var app = getApp()
 Page({
     data: {
         optionList: [
@@ -11,11 +13,12 @@ Page({
 
         showAddBtn: 1,
 
-        date: "2017-09-01",
+        date: "2017-10-01",
         time: "12:01",
 
         voteType: ['单选', '多选，最多2项', '多选，无限制'],
         voteTypeIndex: 0,
+        totalForms: 2,
 
         files: []
 
@@ -84,6 +87,7 @@ Page({
 
         _optionList.push({icon: '/images/common/5.png'})
         this.setData({optionList: _optionList});
+        this.setData({totalForms: this.data.optionList.length})
 
         // 选项大于15个后移除添加按钮
         if(_optionList.length >= 15) {
@@ -109,11 +113,11 @@ Page({
     chooseImage: function (e) {
         var that = this;
         wx.chooseImage({
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            count: 1, // 最多可以选择的图片张数
+            sizeType: ['original', 'compressed'], 
+            sourceType: ['album', 'camera'], 
+            count: 1, 
             success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                // 返回选定照片的本地文件路径列表
                 that.setData({
                     files: that.data.files.concat(res.tempFilePaths)
                 });
@@ -125,5 +129,21 @@ Page({
             current: e.currentTarget.id, // 当前显示图片的http链接
             urls: this.data.files // 需要预览的图片http链接列表
         })
+    },
+    formSubmit: function (e) {
+      console.log('submit，data：', e.detail.value)
+      var formData = e.detail.value;
+      wx.request({
+        url: app.globalData.host + "api/create/",
+        data: formData,
+        method: "POST",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'session': wx.getStorageSync('wxapp_session')
+        },
+        success: function (res) {
+          console.log(res)
+        }
+      })
     }
 });

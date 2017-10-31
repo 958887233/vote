@@ -6,7 +6,7 @@
                     <image class="weui-media-box__thumb user-face" src="{{createFace}}" />
                 </view>
                 <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                    <view class="weui-media-box__title">叶孤城之天外飞仙</view>
+                    <view class="weui-media-box__title">贾利欣</view>
                     <view class="weui-media-box__desc">一分钟前</view>
                 </view>
             </view>

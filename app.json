@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/vote/vote",
     "pages/index/index",
     "pages/create/create",
     "pages/voting/voting",
+    "pages/detail/detail",
+    "pages/my/involved/involved",
     "pages/logs/logs",
     "pages/demo/demo"
   ],
@@ -12,7 +15,6 @@
     "navigationBarTitleText": "投票系统",
     "navigationBarTextStyle": "black"
   },
-
   "tabBar": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

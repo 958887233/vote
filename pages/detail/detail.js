@@ -3,8 +3,8 @@
 var app = getApp()
 Page({
   data: {
-    createFace: 'http://img.joyowo.com/formal/cms/banner/2016/12/82e4218da7b49447752f88999915559c.jpg',
-    detailImg: 'http://img.joyowo.com/formal/cms/banner/2016/12/82e4218da7b49447752f88999915559c.jpg',
+    createFace: '/images/common/vote.jpeg',
+    detailImg: '/images/common/vote.jpeg',
     // radioItems: [
     //     {name: '选项1', value: '0'},
     //     {name: '选项2', value: '1'},
@@ -13,28 +13,23 @@ Page({
     //     {name: '选项5', value: '4'}
     // ],
     checkboxMax: 2,
-    // checkboxItems: [
-    //     {name: '选项1', value: '0', checked: true},
-    //     {name: '选项2', value: '1'},
-    //     {name: '选项3', value: '2'},
-    //     {name: '选项4', value: '3'},
-    //     {name: '选项5', value: '4'}
-    // ],
     progress: 0,
     disabled: false
   },
+  onLoad: function (option) {
+    console.log(option.pk)
+  },
   radioChange: function (e) {
-        console.log('radio发生change事件，携带value值为：', e.detail.value);
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+    var radioItems = this.data.radioItems;
+    for (var i = 0, len = radioItems.length; i < len; ++i) {
+        radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
 
-        var radioItems = this.data.radioItems;
-        for (var i = 0, len = radioItems.length; i < len; ++i) {
-            radioItems[i].checked = radioItems[i].value == e.detail.value;
-        }
-
-        this.setData({
-            radioItems: radioItems
-        });
-    },
+    this.setData({
+        radioItems: radioItems
+    });
+  },
     checkboxChange: function (e) {
         console.log('checkbox发生change事件，携带value值为：', e.detail.value);
 
